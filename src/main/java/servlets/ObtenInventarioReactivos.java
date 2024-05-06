@@ -4,12 +4,17 @@
  */
 package servlets;
 
+import com.google.gson.Gson;
+import dominio.Reactivo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import persistencia.ConsultaReactivo;
 
 /**
  *
@@ -34,7 +39,7 @@ public class ObtenInventarioReactivos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ObtenInventarioReactivos</title>");            
+            out.println("<title>Servlet ObtenInventarioReactivos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ObtenInventarioReactivos at " + request.getContextPath() + "</h1>");
@@ -55,7 +60,15 @@ public class ObtenInventarioReactivos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      
+        ConsultaReactivo cr = new ConsultaReactivo();
+        List<Reactivo> reactivos = cr.obtenerReactivos(); // Suponiendo que tienes una instancia de tu clase persistencia
+        String jsonReactivos = new Gson().toJson(reactivos);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(jsonReactivos);
+        System.out.println("ss");
     }
 
     /**

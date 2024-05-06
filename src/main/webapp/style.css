@@ -47,31 +47,36 @@ button:hover {
     background-color: #0056b3;
 }
 
-#productCatalog, #reagentInventory {
+#productCatalog, #InventarioReactivo {
     margin-top: 20px;
 }
 /* Estilo para la tabla de productos */
-#tabla-productos {
+#tabla-productos, #tabla-reactivos {
     width: 100%;
     border-collapse: collapse;
 }
 
 #tabla-productos th,
-#tabla-productos td {
+#tabla-productos td,
+#tabla-reactivos th,
+#tabla-reactivos td{
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#tabla-productos th {
+#tabla-productos th,
+#tabla-reactivos th{
     background-color: #f2f2f2;
     color: #333;
 }
 
-#tabla-productos tr:nth-child(even) {
+#tabla-productos tr, 
+#tabla-reactivos tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-#tabla-productos tr:hover {
+#tabla-productos tr:hover,
+#tabla-reactivos tr:hover{
     background-color: #f2f2f2;
 }
 

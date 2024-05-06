@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Centro de Diagnósticos - Laboratorio</title>
     
 </head>
@@ -49,9 +50,23 @@
 
         <!-- Botón para consultar el inventario de reactivos -->
         <button id="btnConsultarInventarioReactivos">Consultar Inventario de Reactivos</button>
-        <div id="reagentInventory"></div>
+        <!-- Tabla para mostrar los productos -->
+        <div id="InventarioReactivo">
+            <h2>Inventario de Reactivos</h2>
+            <table id="tabla-reactivos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se cargarán los productos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>

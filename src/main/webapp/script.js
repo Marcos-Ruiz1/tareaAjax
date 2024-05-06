@@ -1,7 +1,7 @@
 let agregarProducto = document.getElementById("btnAgregarProducto");
 let consultarCatalogoProductos = document.getElementById("btnConsultarCatalogoProductos");
 let inventariarReactivo = document.getElementById("btnInventariarReactivo");
-let consultarInventarioReactivos = document.getElementById("btnInventariarReactivo");
+let btnConsultarInventarioReactivos = document.getElementById("btnConsultarInventariarReactivo");
 
 //Escuchador de eventos para agregar productos
 agregarProducto.addEventListener('click', function() {
@@ -110,7 +110,35 @@ inventariarReactivo.addEventListener('click', function() {
 });
 
 //Escuchador de evento para consultar inventario de reactivos con fetch
-consultarInventarioReactivos.addEventListener('click', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
+ let btnConsultarInventarioReactivos = document.getElementById('btnConsultarInventarioReactivos');
+btnConsultarInventarioReactivos.addEventListener('click', function() {
+    console.log("pasará?");
+    fetch('/ObtenInventarioReactivos')
+
     
-   
+    .then(response => response.json())
+    .then(data => {
+        // Llenar la tabla con los datos obtenidos
+        
+        const tabla = document.getElementById('tabla-reactivos');
+        tabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
+        
+        data.forEach(reactivo => {
+            const fila = `
+                <tr>
+                    <td>${reactivo.id}</td>
+                    <td>${reactivo.nombre}</td>
+                    <td>${reactivo.cantidad}</td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+        });
+    })
+    .catch(error => {
+        console.error('Error al obtener los reactivos:', error);
+    });
+});
+
 });

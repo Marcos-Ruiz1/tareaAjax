@@ -12,12 +12,15 @@
     <servlet>
         <servlet-name>InventariarReactivo</servlet-name>
         <servlet-class>servlets.InventariarReactivo</servlet-class>
-    </servlet>
-    <servlet>
+    </servlet><servlet>
         <servlet-name>ObtenInventarioReactivos</servlet-name>
         <servlet-class>servlets.ObtenInventarioReactivos</servlet-class>
     </servlet>
-  
+    <servlet-mapping>
+        <servlet-name>ObtenInventarioReactivos</servlet-name>
+        <url-pattern>/ObtenInventarioReactivos</url-pattern>
+    </servlet-mapping>
+     
     <servlet-mapping>
         <servlet-name>AgregaProducto</servlet-name>
         <url-pattern>/AgregaProducto</url-pattern>
@@ -30,10 +33,7 @@
         <servlet-name>InventariarReactivo</servlet-name>
         <url-pattern>/InventariarReactivo</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ObtenInventarioReactivos</servlet-name>
-        <url-pattern>/ObtenInventarioReactivos</url-pattern>
-    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
