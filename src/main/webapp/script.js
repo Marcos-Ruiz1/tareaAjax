@@ -114,31 +114,39 @@ inventariarReactivo.addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
  let btnConsultarInventarioReactivos = document.getElementById('btnConsultarInventarioReactivos');
 btnConsultarInventarioReactivos.addEventListener('click', function() {
-    console.log("pasará?");
-    fetch('/ObtenInventarioReactivos')
+    console.log("entro a la función de reactivos");
 
-    
-    .then(response => response.json())
-    .then(data => {
-        // Llenar la tabla con los datos obtenidos
-        
-        const tabla = document.getElementById('tabla-reactivos');
-        tabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
-        
-        data.forEach(reactivo => {
-            const fila = `
-                <tr>
-                    <td>${reactivo.id}</td>
-                    <td>${reactivo.nombre}</td>
-                    <td>${reactivo.cantidad}</td>
-                </tr>
-            `;
-            tabla.innerHTML += fila;
-        });
+    fetch('ObtenInventarioReactivos', {
+        method: 'GET'
     })
-    .catch(error => {
-        console.error('Error al obtener los reactivos:', error);
-    });
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error: ' + response.statusText);
+        }
+    })
+    .then(reactivo => {
+        console.log('Reactivo received successfully');
+        console.log(reactivo);
+         let reactivoTexto = '';
+            for (let i = 0; i < reactivo.length; i++) {
+                reactivoTexto += 'ID: ' + reactivo[i].id + ', Nombre: ' + reactivo[i].nombre + ', Cantidad: ' + reactivo[i].cantidad + '\n';
+            }
+            window.alert(reactivoTexto);
+        const tabla = document.getElementById('tabla-reactivos');
+        const fila = `
+            <tr>
+                <td>${reactivo.id}</td>
+                <td>${reactivo.nombre}</td>
+                <td>${reactivo.cantidad}</td>
+            </tr>
+        `;
+        tabla.innerHTML += fila;
+
+    })
+    .catch(error => console.log('Error:', error));
+    
 });
 
 });
