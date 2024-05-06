@@ -50,4 +50,29 @@ button:hover {
 #productCatalog, #reagentInventory {
     margin-top: 20px;
 }
+/* Estilo para la tabla de productos */
+#tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabla-productos th,
+#tabla-productos td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tabla-productos th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+#tabla-productos tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tabla-productos tr:hover {
+    background-color: #f2f2f2;
+}
+
 

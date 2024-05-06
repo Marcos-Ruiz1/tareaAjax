@@ -22,25 +22,66 @@ agregarProducto.addEventListener('click', function() {
     xhr.send(new URLSearchParams(producto));
 });
 
-//Escuchador de eventos para consultar cátalogo de productos con httpRequest
-consultarCatalogoProductos.addEventListener('click', function() {
-    console.log("entro para consultar catalogo de productos");
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'ObtenProductos', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('Product catalog fetched successfully');
-            let productos = JSON.parse(xhr.responseText);
-            console.log(productos);
-            let productosTexto = '';
-            for (let i = 0; i < productos.length; i++) {
-                productosTexto += 'ID: ' + productos[i].id + ', Nombre: ' + productos[i].nombre + ', Cantidad: ' + productos[i].cantidad + '\n';
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let btnConsultarCatalogoProductos = document.getElementById('btnConsultarCatalogoProductos');
+    btnConsultarCatalogoProductos.addEventListener('click', function() {
+        console.log("Haciendo clic en el botón 'Consultar Catálogo de Productos'");
+
+        // Iniciar la solicitud AJAX para obtener los productos del servidor
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'ObtenProductos', true);
+      
+        // Configurar el manejo de la respuesta del servidor
+        xhr.onreadystatechange = function () {
+            console.log('Estado de la solicitud:', xhr.readyState);
+            if (xhr.readyState === 4) {
+                console.log('Estado de la respuesta:', xhr.status);
+                if (xhr.status === 200) {
+                    console.log('Respuesta recibida del servidor:', xhr.responseText);
+                    let productos = JSON.parse(xhr.responseText);
+                    console.log('Productos obtenidos:', productos);
+
+                    // Actualizar la tabla de productos en index.html con los datos obtenidos del servidor
+                    let tablaProductos = document.getElementById('tabla-productos');
+                    if (tablaProductos) {
+                        let tbody = tablaProductos.getElementsByTagName('tbody')[0];
+                        if (tbody) {
+                            tbody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+                            // Iterar sobre los productos y añadirlos a la tabla
+                            for (let i = 0; i < productos.length; i++) {
+                                let producto = productos[i];
+                                let fila = tbody.insertRow();
+                                let celdaId = fila.insertCell(0);
+                                let celdaNombre = fila.insertCell(1);
+                                let celdaCantidad = fila.insertCell(2);
+                                celdaId.textContent = producto.id;
+                                celdaNombre.textContent = producto.nombre;
+                                celdaCantidad.textContent = producto.cantidad;
+                            }
+                        } else {
+                            console.error("No se encontró el tbody en la tabla de productos.");
+                        }
+                    } else {
+                        console.error("No se encontró la tabla de productos en el documento.");
+                    }
+                } else {
+                    console.error('Error al recibir la respuesta del servidor:', xhr.status);
+                }
             }
-            window.alert(productosTexto);
-        }
-    };
-    xhr.send();
+        };
+
+        // Enviar la solicitud al servidor
+        xhr.send();
+    });
 });
+
+
+
+
 
 //Escuchador de evento para inventariar reactivos con fetch
 inventariarReactivo.addEventListener('click', function() {

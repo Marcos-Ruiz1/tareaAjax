@@ -20,8 +20,24 @@
         </form>
         
         <!-- Botón para consultar el catálogo de productos -->
-        <button  id="btnConsultarCatalogoProductos">Consultar Catálogo de Productos</button>
-        <div id="productCatalog"></div>
+        <button id="btnConsultarCatalogoProductos">Consultar Catálogo de Productos</button>
+        
+        <!-- Tabla para mostrar los productos -->
+        <div id="productCatalog">
+            <h2>Catálogo de Productos</h2>
+            <table id="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se cargarán los productos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
 
         <!-- Formulario para inventariar un reactivo -->
         <h2>Inventariar Reactivo</h2>
@@ -39,4 +55,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

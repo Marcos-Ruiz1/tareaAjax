@@ -7,11 +7,7 @@ package servlets;
 import dominio.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +34,7 @@ public class ObtenProductos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +50,7 @@ public class ObtenProductos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
         ConsultasProducto sql = new ConsultasProducto();
         List<Producto> productos = sql.obtenerProductos();
 
@@ -69,6 +65,9 @@ public class ObtenProductos extends HttpServlet {
 
         response.setContentType("application/json");
         response.getWriter().write(jsonArray.toString());
+        
+        System.out.println("Servlet ObtenProductos: Respuesta enviada al cliente");
+        
     }
 
     /**
