@@ -20,16 +20,19 @@
         </form>
         
         <!-- Botón para consultar el catálogo de productos -->
-        <button id="btnConsultarCatalogo">Consultar Catálogo de Productos</button>
+        <button id="btnConsultarCatalogoProductos">Consultar Catálogo de Productos</button>
         <div id="productCatalog"></div>
 
-        <!-- Botón para inventariar un reactivo -->
+        <!-- Formulario para inventariar un reactivo -->
         <h2>Inventariar Reactivo</h2>
-        <button id="inventoryReagentButton">Inventariar Reactivo</button>
-        <div id="inventoryResult"></div>
+        <form method="POST" id="addReagentForm">
+            <input name="nombre" type="text" id="nombreReactivo" placeholder="Nombre del reactivo" required>
+            <input name="cantidad" type="number" id="cantidadReactivo" placeholder="Cantidad" required>
+            <button id="btnInventariarReactivo" type="submit">Inventariar Reactivo</button>
+        </form>
 
         <!-- Botón para consultar el inventario de reactivos -->
-        <button id="getInventoryButton">Consultar Inventario de Reactivos</button>
+        <button id="btnConsultarInventarioReactivos">Consultar Inventario de Reactivos</button>
         <div id="reagentInventory"></div>
     </div>
 

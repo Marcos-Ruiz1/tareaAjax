@@ -1,5 +1,9 @@
 let agregarProducto = document.getElementById("btnAgregarProducto");
+let consultarCatalogoProductos = document.getElementById("btnConsultarCatalogoProductos");
+let inventariarReactivo = document.getElementById("btnInventariarReactivo");
+let consultarInventarioReactivos = document.getElementById("btnInventariarReactivo");
 
+//Escuchador de eventos para agregar productos
 agregarProducto.addEventListener('click', function() {
     console.log("entro a la función");
     let producto = {
@@ -16,4 +20,42 @@ agregarProducto.addEventListener('click', function() {
         }
     };
     xhr.send(new URLSearchParams(producto));
+});
+
+//Escuchador de eventos para consultar cátalogo de productos con httpRequest
+consultarCatalogoProductos.addEventListener('click', function() {
+    
+   
+});
+
+//Escuchador de evento para inventariar reactivos con fetch
+inventariarReactivo.addEventListener('click', function() {
+    console.log("entro a la función de reactivos");
+    let reactivo = {
+        nombre: document.getElementById('nombreReactivo').value,
+        cantidad: document.getElementById('cantidadReactivo').value
+    };
+
+    fetch('InventariarReactivo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(reactivo)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('reactivo created successfully');
+            return response.text();
+        } else {
+            throw new Error('Error: ' + response.statusText);
+        }
+    })
+    .catch(error => console.log('Error:', error));
+});
+
+//Escuchador de evento para consultar inventario de reactivos con fetch
+consultarInventarioReactivos.addEventListener('click', function() {
+    
+   
 });
