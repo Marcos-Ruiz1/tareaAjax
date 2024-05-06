@@ -24,8 +24,22 @@ agregarProducto.addEventListener('click', function() {
 
 //Escuchador de eventos para consultar cátalogo de productos con httpRequest
 consultarCatalogoProductos.addEventListener('click', function() {
-    
-   
+    console.log("entro para consultar catalogo de productos");
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'ObtenProductos', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log('Product catalog fetched successfully');
+            let productos = JSON.parse(xhr.responseText);
+            console.log(productos);
+            let productosTexto = '';
+            for (let i = 0; i < productos.length; i++) {
+                productosTexto += 'ID: ' + productos[i].id + ', Nombre: ' + productos[i].nombre + ', Cantidad: ' + productos[i].cantidad + '\n';
+            }
+            window.alert(productosTexto);
+        }
+    };
+    xhr.send();
 });
 
 //Escuchador de evento para inventariar reactivos con fetch
