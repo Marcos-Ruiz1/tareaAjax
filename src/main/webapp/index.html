@@ -1,47 +1,39 @@
 <!DOCTYPE html>
-
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Auto-Completion using AJAX</title>
-    </head>
-    <body>
-        <h1>Auto-Completion using AJAX</h1>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Centro de Diagnósticos - Laboratorio</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Centro de Diagnósticos - Laboratorio</h1>
         
-        <p>This example shows how you can do real time auto-completion using Asynchronous
-            JavaScript and XML (Ajax) interactions.
-        </p>
-
-        <p>In the form below enter a name. Possible names that will be completed are displayed
-            below the form. For example, try typing in "Bach," "Mozart," or "Stravinsky,"
-            then click on one of the selections to see composer details.
-        </p>
-
-        <form name="autofillform" action="autocomplete">
-            <table border="0" cellpadding="5">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Composer Name:</strong></td>
-                        <td>
-                            <input type="text"
-                                   size="40"
-                                   id="complete-field"
-                                   onkeyup="doCompletion();">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Formulario para agregar un producto -->
+        <h2>Agregar Producto al Catálogo</h2>
+        <form method="POST" id="addProductForm">
+            <input name="nombre" type="text" id="nombreProducto" placeholder="Nombre del producto" required>
+            <input type="number" id="cantidadProducto" placeholder="Cantidad" required>
+            <button id="btnAgregarProducto" type="submit">Agregar Producto</button>
         </form>
+        
+        <!-- Botón para consultar el catálogo de productos -->
+        <button id="btnConsultarCatalogo">Consultar Catálogo de Productos</button>
+        <div id="productCatalog"></div>
 
-    </body>
+        <!-- Botón para inventariar un reactivo -->
+        <h2>Inventariar Reactivo</h2>
+        <button id="inventoryReagentButton">Inventariar Reactivo</button>
+        <div id="inventoryResult"></div>
+
+        <!-- Botón para consultar el inventario de reactivos -->
+        <button id="getInventoryButton">Consultar Inventario de Reactivos</button>
+        <div id="reagentInventory"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
+
