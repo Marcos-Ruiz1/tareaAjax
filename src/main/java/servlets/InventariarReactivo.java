@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import persistencia.ConsultaReactivo;
+import persistencia.ConsultasProducto;
 
 /**
  *
@@ -60,9 +62,21 @@ public class InventariarReactivo extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+         //Variables del formulario
         String nombre = request.getParameter("nombre");
-        System.out.println(nombre);
-        String cantidad = request.getParameter("cantidad");
+        String cantidadString = request.getParameter("cantidad");
+        int cantidad = Integer.parseInt(cantidadString);
+        System.out.println("Nombre: " +nombre);
+        System.out.println("Cantidad: " +cantidad);
+        
+        ConsultaReactivo sql = new ConsultaReactivo();
+        System.out.println("Objeto consultas creado con exito");
+        
+        if(sql.registrar(nombre, cantidad)){
+            
+        }else{
+            
+        }
     }
 
     /**

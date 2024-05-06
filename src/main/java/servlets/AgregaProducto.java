@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package servlets;
-
+import persistencia.ConsultasProducto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -61,11 +61,21 @@ public class AgregaProducto extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        //Variables del formulario
         String nombre = request.getParameter("nombre");
-        System.out.println("nombre del producto:" + nombre);
-        String cantidad = request.getParameter("cantidad");
-        int cantidad2 = Integer.parseInt(cantidad);
-        System.out.println(cantidad);
+        String cantidadString = request.getParameter("cantidad");
+        int cantidad = Integer.parseInt(cantidadString);
+        System.out.println("Nombre: " +nombre);
+        System.out.println("Cantidad: " +cantidad);
+        
+        ConsultasProducto sql = new ConsultasProducto();
+        System.out.println("Objeto consultas creado con exito");
+        
+        if(sql.registrar(nombre, cantidad)){
+            
+        }else{
+            
+        }
     }
 
     /**
