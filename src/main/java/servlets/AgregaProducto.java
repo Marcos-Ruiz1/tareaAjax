@@ -30,8 +30,7 @@ public class AgregaProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String nombre = request.getParameter("nombreProducto");
-        System.out.println("nombre del producto:" + nombre);
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,6 +60,12 @@ public class AgregaProducto extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        String nombre = request.getParameter("nombre");
+        System.out.println("nombre del producto:" + nombre);
+        String cantidad = request.getParameter("cantidad");
+        int cantidad2 = Integer.parseInt(cantidad);
+        System.out.println(cantidad);
     }
 
     /**
